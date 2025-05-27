@@ -4,7 +4,6 @@ import {
   PurchaseDispatchStatus,
   PurchaseOptimizationStatus,
 } from '../enums/purchase.enum';
-import { IUser } from './user.interface';
 
 export interface IUnit extends Document {
   readonly _id?: Types.ObjectId;
