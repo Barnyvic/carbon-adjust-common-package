@@ -10,10 +10,14 @@ on:
 jobs:
   publish:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      packages: write
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -23,8 +27,8 @@ jobs:
 
       - name: Configure Git
         run: |
-          git config --global user.name 'GitHub Action'
-          git config --global user.email 'action@github.com'
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
 
       - name: Install dependencies
         run: yarn install --frozen-lockfile
@@ -40,8 +44,10 @@ jobs:
       - name: Bump version
         run: |
           npm version patch -m "Bump version to %s [skip ci]"
-          git push
-          git push --tags
+          git push https://${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git HEAD:${GITHUB_REF}
+          git push https://${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git --tags
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Publish to NPM
         run: npm publish --access public
