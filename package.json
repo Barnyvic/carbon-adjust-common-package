@@ -1,6 +1,6 @@
 {
   "name": "@carbon-adjust/common",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Shared code for Carbon Adjust microservices",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
