@@ -6,3 +6,7 @@ export * from './user.enum';
 export * from './wallet.enum';
 export * from './transport.enum';
 export * from './purchase.enum';
+export * from './monitoring.enum';
+export * from './mail.enum';
+export * from './pid.enum';
+export * from './job.enum';

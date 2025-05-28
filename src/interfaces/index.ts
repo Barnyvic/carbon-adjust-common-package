@@ -18,3 +18,5 @@ export * from './corporate-users-department.interface';
 export * from './pid.interface';
 export * from './otp.interface';
 export * from './monitoring.interface';
+export * from './mail.interface';
+export * from './helper.interface';
