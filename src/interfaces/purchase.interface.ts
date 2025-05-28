@@ -3,8 +3,8 @@ import { IDate } from './base.interface';
 import { PurchaseDispatchStatus } from '../enums/rabbitmq.enum';
 import { IUser } from './user.interface';
 import { PurchaseOptimizationStatus } from '../enums/purchase.enum';
-import { IUnit } from './corporate-users-department.interface';
-import { ISubUnit } from './corporate-users-department.interface';
+import { IUnit } from './unit.interface';
+import { ISubUnit } from './subunit.interface';
 
 export interface IPurchase extends Document {
   readonly _id?: mongoose.Schema.Types.ObjectId;

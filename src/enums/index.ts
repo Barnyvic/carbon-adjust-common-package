@@ -11,3 +11,6 @@ export * from './mail.enum';
 export * from './pid.enum';
 export * from './job.enum';
 export * from './coupon.enum';
+export * from './asset.enum';
+export * from './building.enum';
+export * from './dispatch.enum';

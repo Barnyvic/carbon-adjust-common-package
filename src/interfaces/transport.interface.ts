@@ -1,5 +1,6 @@
 import { Document, Types } from 'mongoose';
 import { ModeOfTransportation, TransportationDetails } from 'src/enums';
+import { ICarbonFootprintTracker } from './building.interface';
 
 export interface IOptimizeTripQueueResponse {
   transport_id: string;
@@ -139,12 +140,6 @@ export interface ITransitionScore {
   medium: ITrendline;
   long: ITrendline;
   score: number;
-}
-
-export interface ICarbonFootprintTracker {
-  carbon_footprint: number;
-  average_footprint: number;
-  high_footprint: number;
 }
 
 export interface IAggregateEnergyBill {
