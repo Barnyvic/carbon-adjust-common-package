@@ -1,9 +1,9 @@
 import mongoose, { Document } from 'mongoose';
-import { StaffAccessLevel } from '../enums/staff.enum';
 import { IUnit } from './unit.interface';
 import { ISubUnit } from './subunit.interface';
 import { IUser } from './user.interface';
 import { ReceiptStatus } from '../enums/asset.enum';
+import { StaffAccessLevel } from 'src/enums/roles.enum';
 
 export interface IStaffMember extends Document {
   readonly _id?: mongoose.Schema.Types.ObjectId;
