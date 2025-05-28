@@ -26,3 +26,5 @@ export * from './building.interface';
 export * from './staff.interface';
 export * from './subunit.interface';
 export * from './unit.interface';
+export * from './booking.interface';
+export * from './rabbitmq.interface';

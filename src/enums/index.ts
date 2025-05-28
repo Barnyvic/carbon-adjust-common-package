@@ -14,3 +14,5 @@ export * from './coupon.enum';
 export * from './asset.enum';
 export * from './building.enum';
 export * from './dispatch.enum';
+export * from './booking.enum';
+export * from './broker.enum';
