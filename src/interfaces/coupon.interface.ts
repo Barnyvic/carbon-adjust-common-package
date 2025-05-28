@@ -49,4 +49,4 @@ export interface IActivateCouponMailPayload {
 
 export interface IDeactivateCouponMailPayload {
   coupon: ICoupon;
-} 
+}

@@ -3,4 +3,4 @@ export interface TwilioOTP {
   channel: string;
   status: string;
   valid: boolean;
-} 
+}
