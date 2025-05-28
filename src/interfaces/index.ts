@@ -20,3 +20,4 @@ export * from './otp.interface';
 export * from './monitoring.interface';
 export * from './mail.interface';
 export * from './helper.interface';
+export * from './coupon.interface';

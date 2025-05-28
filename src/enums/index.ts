@@ -10,3 +10,4 @@ export * from './monitoring.enum';
 export * from './mail.enum';
 export * from './pid.enum';
 export * from './job.enum';
+export * from './coupon.enum';
