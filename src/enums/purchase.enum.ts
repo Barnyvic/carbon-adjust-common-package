@@ -8,10 +8,3 @@ export enum PurchaseOptimizationStatus {
   PROCESSING = 'processing',
   COMPLETED = 'completed',
 }
-
-export enum PurchaseDispatchStatus {
-  PENDING = 'pending',
-  PROCESSING = 'processing',
-  COMPLETED = 'completed',
-  FAILED = 'failed',
-}

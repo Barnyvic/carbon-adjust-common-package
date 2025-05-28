@@ -1,36 +1,13 @@
-import { Document, Types } from 'mongoose';
+import mongoose, { Document } from 'mongoose';
 import { IDate } from './base.interface';
-import {
-  PurchaseDispatchStatus,
-  PurchaseOptimizationStatus,
-} from '../enums/purchase.enum';
-
-export interface IUnit extends Document {
-  readonly _id?: Types.ObjectId;
-  name: string;
-  unitFunction?: string;
-  corporateAdmin: Types.ObjectId;
-  unitAdmin?: Types.ObjectId;
-  subUnit?: Types.ObjectId;
-  staff?: Types.ObjectId[];
-  readonly createdAt: Date;
-  readonly updatedAt: Date;
-}
-
-export interface ISubUnit extends Document {
-  _id: Types.ObjectId;
-  name: string;
-  description?: string;
-  parentUnit: Types.ObjectId;
-  staff: Types.ObjectId[];
-  subUnitAdmin?: Types.ObjectId;
-  isActive: boolean;
-  createdAt: Date;
-  updatedAt: Date;
-}
+import { PurchaseDispatchStatus } from '../enums/rabbitmq.enum';
+import { IUser } from './user.interface';
+import { PurchaseOptimizationStatus } from '../enums/purchase.enum';
+import { IUnit } from './corporate-users-department.interface';
+import { ISubUnit } from './corporate-users-department.interface';
 
 export interface IPurchase extends Document {
-  readonly _id?: Types.ObjectId;
+  readonly _id?: mongoose.Schema.Types.ObjectId;
   dateOfUpload: IDate['createdAt'];
   totalEmission?: number;
   readonly documentsUploaded: number;
@@ -42,41 +19,22 @@ export interface IPurchase extends Document {
   carbornFootPrint?: number;
   percentageContribution?: number;
   optimizationStatus?: PurchaseOptimizationStatus;
-  creator: Types.ObjectId;
-  unit?: Types.ObjectId;
-  subUnit?: Types.ObjectId;
+  creator: IUser['_id'];
+  unit?: IUnit['_id'];
+  subUnit?: ISubUnit['_id'];
   readonly createdAt?: IDate['createdAt'];
   readonly updatedAt?: IDate['updatedAt'];
 }
 
 export interface IDispatchPurchase extends Document {
-  _id?: Types.ObjectId;
-  purchaseId: Types.ObjectId;
+  _id?: mongoose.Schema.Types.ObjectId;
+  purchaseId: IPurchase['_id'];
   taskId?: string;
   purchase_id?: string;
-  creator: Types.ObjectId;
+  creator: mongoose.Schema.Types.ObjectId;
   status?: PurchaseDispatchStatus;
   readonly createdAt?: IDate['createdAt'];
   readonly updatedAt?: IDate['updatedAt'];
-}
-
-export interface IPurchaseTrendline {
-  consumptionTrendline: number;
-  priceTrendline: number;
-  policyEffectTrendline: number;
-}
-
-export interface IPurchaseTransitionScore {
-  short: IPurchaseTrendline;
-  medium: IPurchaseTrendline;
-  long: IPurchaseTrendline;
-  score: number;
-}
-
-export interface IPurchaseCarbonFootprintTracker {
-  carbonFootprint: number;
-  averageFootprint: number;
-  highFootprint: number;
 }
 
 export interface IAggregateBill {
@@ -87,19 +45,19 @@ export interface IAggregateBill {
   averageCarbonIntensity: number;
 }
 
-export interface IPurchaseTrendlineResponse {
+interface Trendline {
   consumption_trendline: number;
   price_trendline: number;
   policy_effect_trendline: number;
 }
 
-export interface IPurchaseTransitionScoreResponse {
+interface TransitionScore {
   created_at: string;
   updated_at: string;
   bill_id: string;
-  short: IPurchaseTrendlineResponse;
-  medium: IPurchaseTrendlineResponse;
-  long: IPurchaseTrendlineResponse;
+  short: Trendline;
+  medium: Trendline;
+  long: Trendline;
   score: number;
   current_electricity_charge: number;
   current_electricity_demand: number;
@@ -108,7 +66,7 @@ export interface IPurchaseTransitionScoreResponse {
   average_carbon_intensity: number;
 }
 
-export interface IPurchaseCarbonFootprintTrackerResponse {
+interface CarbonFootprintTracker {
   created_at: string;
   updated_at: string;
   bill_id: string;
@@ -122,7 +80,7 @@ export interface IPurchaseCarbonFootprintTrackerResponse {
   high_footprint: number;
 }
 
-export interface IAggregateBillResponse {
+interface AggregateBill {
   current_electricity_charge: number;
   current_electricity_demand: number;
   current_gas_charge: number;
@@ -138,9 +96,9 @@ export interface IPurchaseAIResponseData {
   };
   total_emission: number;
   percentage_contribution: number;
-  transition_score: IPurchaseTransitionScoreResponse;
-  carbon_footprint_tracker: IPurchaseCarbonFootprintTrackerResponse;
-  aggregate_bill: IAggregateBillResponse;
+  transition_score: TransitionScore;
+  carbon_footprint_tracker: CarbonFootprintTracker;
+  aggregate_bill: AggregateBill;
   purchase_ids: string[];
 }
 

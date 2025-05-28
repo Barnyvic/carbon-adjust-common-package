@@ -47,3 +47,21 @@ export enum SupportedGasSupplier {
   SSE = 'sse',
   OTHER = 'other',
 }
+
+export enum SupportedElectricitySupplier {
+  BRISTISH_GAS = 'British Gas (Centrica)',
+  EDF_ENERGY = 'EDF Energy',
+  EON_UK = 'E.ON UK',
+  NPOWER = 'npower (Innogy)',
+  SCOTTISH_POWER = 'ScottishPower (Iberdrola)',
+  SSE = 'SSE (SSE plc)',
+  BULB_ENERGY = 'Bulb Energy',
+  COOP_ENERGY = 'Co-op Energy',
+  ECOTRICITY = 'Ecotricity',
+  FIRST_UTILITY = 'First Utility (Shell Energy)',
+  GOOD_ENERGY = 'Good Energy',
+  GREEN_STAR_ENERGY = 'Green Star Energy',
+  OCTOPUS_ENERGY = 'Octopus Energy',
+  OVO_ENERGY = 'Ovo Energy',
+  UTILITA_ENERGY = 'Utilita Energy',
+}
